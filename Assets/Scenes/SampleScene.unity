@@ -194,6 +194,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60098312}
   m_CullTransparentMesh: 1
+--- !u!1 &187830216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187830217}
+  - component: {fileID: 187830218}
+  - component: {fileID: 187830219}
+  m_Layer: 0
+  m_Name: Text_Seperators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187830217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187830216}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187830218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187830216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e3498cdac268c458cbc320cbd8f236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Text_Seperator_0
+  Motives_For_Murder: []
+  Murder_Locations: []
+  Murder_Weapons: []
+  Murder_Scenario: 
+--- !u!114 &187830219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187830216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e610f527bfec04194cacd49d267851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Text_Seperator_1
+  Previous_Witness_Response: 
+  Witness_Response: 
 --- !u!1 &219956609
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +562,8 @@ MonoBehaviour:
   Gemini_Api_Handler: {fileID: 1074529676}
   Loading_Screen: {fileID: 219956609}
   Prompt_List_SO: {fileID: 11400000, guid: fe279a3d78231754fa7c6087bb545472, type: 2}
-  Targeted_Prompt: 
+  Witness_Manager: {fileID: 1923892487}
+  Text_Seperator_0: {fileID: 187830218}
 --- !u!1 &1074529673
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +887,38 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1606093599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606093600}
+  m_Layer: 0
+  m_Name: Witness
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1606093600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606093599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1923892486}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627272367
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +1031,55 @@ Transform:
   - {fileID: 715798390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1923892485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923892486}
+  - component: {fileID: 1923892487}
+  m_Layer: 0
+  m_Name: Witness_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923892486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923892485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1606093600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923892487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923892485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc08304fb57a3d64c8827066f29336d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Witness_Manager
+  Gemini_Api_Handler: {fileID: 1074529676}
+  Prompt_List_SO: {fileID: 11400000, guid: fe279a3d78231754fa7c6087bb545472, type: 2}
+  Text_Seperator_0: {fileID: 187830218}
+  Text_Seperator_1: {fileID: 187830219}
+  Enable_Debug_Keys: 1
 --- !u!1 &2069136378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,3 +1189,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1269586726}
   - {fileID: 1850750889}
+  - {fileID: 187830217}
+  - {fileID: 1606093600}
