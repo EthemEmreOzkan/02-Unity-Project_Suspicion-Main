@@ -55,7 +55,7 @@ public class Witness_Manager : MonoBehaviour
                 Witness_Interrogation_Completed = true;
             }
         }
-
+        //! Buton entegrasyonu buraya yapılacak
         if (Enable_Debug_Keys && Input.GetKeyDown(KeyCode.A) && !Gemini_Api_Handler.Is_Request_In_Progress && !Waiting_For_Witness_Response)
         {
             Manual_Witness_Interrogation();
@@ -86,16 +86,6 @@ public class Witness_Manager : MonoBehaviour
         Waiting_For_Witness_Response = true;
         Text_Seperator_1.Save_Previous_Response();
         Send_Witness_Prompt();
-    }
-
-    public bool Is_Witness_Interrogation_Completed()
-    {
-        return Witness_Interrogation_Completed;
-    }
-
-    public bool Is_Waiting_For_Witness()
-    {
-        return Waiting_For_Witness_Response;
     }
 
     #endregion
