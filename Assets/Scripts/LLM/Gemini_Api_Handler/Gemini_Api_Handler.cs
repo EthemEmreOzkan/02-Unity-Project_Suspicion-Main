@@ -13,19 +13,20 @@ public class Gemini_Api_Handler : MonoBehaviour
     [SerializeField] private string model = "gemini-2.5-flash";
     [SerializeField] private string apiKey = "YOUR_GEMINI_API_KEY_HERE";
     [Space]
+    [Header("Yanıt ----------------------------------------------------------------------")]
+    [Space]
+    [TextArea(3, 10)]
+    public string Last_Response = "";
+    [Space]
+    public bool Is_Response_Received = false;
+    public bool Is_Request_In_Progress = false;
+    [Space]
     [Header("Test Metni -----------------------------------------------------------------")]
     [Space]
     [SerializeField] private KeyCode Test_Tusu = KeyCode.W;
     [TextArea(3, 10)]
     [Space]
     [SerializeField] private string Test_Prompt;
-    [Space]
-    [Header("Yanıt ----------------------------------------------------------------------")]
-    [Space]
-    [TextArea(3, 10)]
-    public string Last_Response = "";
-    public bool Is_Response_Received = false;
-    public bool Is_Request_In_Progress = false;
 
     #endregion
     //*-----------------------------------------------------------------------------------------//
