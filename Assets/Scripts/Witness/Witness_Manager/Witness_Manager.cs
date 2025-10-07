@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Text;
+using TMPro;
 
 public class Witness_Manager : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class Witness_Manager : MonoBehaviour
     [SerializeField] private Text_Seperator_0 Text_Seperator_0;
     [SerializeField] private Text_Seperator_1 Text_Seperator_1;
     [Space]
-    [Header("Debug Options --------------------------------------------------------------------------")]
+    [Header("Debug Options -----------------------------------------------------------------------")]
     [SerializeField] private bool Enable_Debug_Keys = true;
+    [Space]
 
     #endregion
 
@@ -75,6 +77,7 @@ public class Witness_Manager : MonoBehaviour
     public void Start_Witness_Interrogation()
     {
         Text_Seperator_1.Save_Previous_Response();
+        Text_Seperator_1.Start_Waiting_Animation();
         Send_Witness_Prompt();
     }
 
@@ -85,6 +88,7 @@ public class Witness_Manager : MonoBehaviour
         
         Waiting_For_Witness_Response = true;
         Text_Seperator_1.Save_Previous_Response();
+        Text_Seperator_1.Start_Waiting_Animation();
         Send_Witness_Prompt();
     }
 
