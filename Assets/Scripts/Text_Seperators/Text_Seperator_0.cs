@@ -17,7 +17,7 @@ public class Text_Seperator_0 : MonoBehaviour
     [Space]
     [TextArea(3, 10)]
     public string Murder_Scenario = "";
-    //TODO düznle
+
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
     #region Public Methods

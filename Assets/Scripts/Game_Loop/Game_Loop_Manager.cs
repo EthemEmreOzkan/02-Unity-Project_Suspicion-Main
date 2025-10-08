@@ -11,6 +11,7 @@ public class Game_Loop_Manager : MonoBehaviour
     [SerializeField] private GameObject Loading_Screen;
     [SerializeField] private Prompt_List_SO Prompt_List_SO;
     [SerializeField] private Witness_Manager Witness_Manager;
+    [SerializeField] private Suspicion_Words_Manager Suspicion_Words_Manager;
     [Space]
     [Header("Text Separators --------------------------------------------------------------------")]
     [Space]
@@ -55,6 +56,18 @@ public class Game_Loop_Manager : MonoBehaviour
         }
     }
 
+    public void On_Prediction_Button_Pressed()
+    {
+        if (!Suspicion_Words_Manager.Is_All_Categories_Selected())
+        {
+            Debug.LogWarning("Lütfen tüm kategorilerden seçim yapın!");
+            return;
+        }
+
+        Suspicion_Words_Manager.Prepare_Player_Prediction();
+        Send_Player_Prediction();
+    }
+
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
 
@@ -72,6 +85,21 @@ public class Game_Loop_Manager : MonoBehaviour
         Text_Seperator_0.Parse_Response(Gemini_Api_Handler.Last_Response);
         Initial_Response_Processed = true;
         Witness_Manager.Initialize_Witness_System();
+        Suspicion_Words_Manager.Update_Suspicion_Words_UI();
+    }
+
+    private void Send_Player_Prediction()
+    {
+        // Player_Prediction boş değilse Gemini'ye gönder
+        if (!string.IsNullOrEmpty(Suspicion_Words_Manager.Player_Prediction))
+        {
+            Debug.Log("Tahmin Gemini'ye gönderiliyor: " + Suspicion_Words_Manager.Player_Prediction);
+            Gemini_Api_Handler.Send_Prompt(Suspicion_Words_Manager.Player_Prediction);
+        }
+        else
+        {
+            Debug.LogError("Player_Prediction boş!");
+        }
     }
 
     #endregion
