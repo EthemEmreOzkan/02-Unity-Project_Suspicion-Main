@@ -98,7 +98,7 @@ MonoBehaviour:
       Hikayesi: [Murderer's first-person confession containing the 3 correct parameters]\r\n\r\n===
       OUTPUT FORMAT (STRICT) ===\r\nRespond with ONLY the witness statement. NO additional
       formatting, labels, or explanations.\r\n\r\nFormat:\r\n[Single paragraph testimony
-      in Turkish, 40-90 words, first-person perspective]\r\n\r\n=== BEHAVIORAL GUIDELINES
+      in Turkish, 40-80 words, first-person perspective]\r\n\r\n=== BEHAVIORAL GUIDELINES
       ===\r\n\r\n1. CONSISTENCY CHECK:\r\n   - If \"\xD6nceki \u0130fade\" exists,
       maintain some consistency (don't completely contradict yourself)\r\n   - You
       can add new details or slightly change your memory, but stay generally coherent\r\n  
