@@ -10,8 +10,12 @@ public class Game_Loop_Manager : MonoBehaviour
     [SerializeField] private Gemini_Api_Handler Gemini_Api_Handler;
     [SerializeField] private GameObject Loading_Screen;
     [SerializeField] private Prompt_List_SO Prompt_List_SO;
+    [Space]
+    [Header("Manager References -----------------------------------------------------------------")]
+    [Space]
     [SerializeField] private Witness_Manager Witness_Manager;
     [SerializeField] private Suspicion_Words_Manager Suspicion_Words_Manager;
+    [SerializeField] private Murder_Manager Murder_Manager; // NEW!
     [Space]
     [Header("Text Separators --------------------------------------------------------------------")]
     [Space]
@@ -68,6 +72,19 @@ public class Game_Loop_Manager : MonoBehaviour
         Send_Player_Prediction();
     }
 
+    // NEW: Wrapper for Murder_Manager Ask button
+    public void On_Ask_Suspect_Button_Pressed()
+    {
+        if (Murder_Manager != null)
+        {
+            Murder_Manager.On_Ask_Button_Pressed();
+        }
+        else
+        {
+            Debug.LogError("Murder_Manager reference is missing!");
+        }
+    }
+
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
 
@@ -84,8 +101,11 @@ public class Game_Loop_Manager : MonoBehaviour
         Loading_Screen.SetActive(false);
         Text_Seperator_0.Parse_Response(Gemini_Api_Handler.Last_Response);
         Initial_Response_Processed = true;
+        
+        // Initialize systems
         Witness_Manager.Initialize_Witness_System();
         Suspicion_Words_Manager.Update_Suspicion_Words_UI();
+        Murder_Manager.Initialize_Suspect_System(); // NEW!
     }
 
     private void Send_Player_Prediction()
