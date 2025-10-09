@@ -363,7 +363,7 @@ public class Murder_Manager : MonoBehaviour
             state_text.AppendLine($"<color=yellow>Korku:</color> {Korku}/100");
             state_text.AppendLine($"<color=red>Stres:</color> {Stres}/100");
             state_text.AppendLine($"<color=orange>Öfke:</color> {Ofke}/100");
-            state_text.AppendLine($"<color=blue>Soğukkanlılık:</color> {Sogukkkanlilik}/100");
+            state_text.AppendLine($"<color=purple>Soğukkanlılık:</color> {Sogukkkanlilik}/100");
             state_text.AppendLine($"<color=green>Yorgunluk:</color> {Yorgunluk}/100");
             state_text.AppendLine();
             
