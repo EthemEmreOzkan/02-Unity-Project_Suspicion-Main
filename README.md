@@ -94,7 +94,7 @@ Oyun başlarken bir **görgü tanığı ifadesi** alırsınız. Ancak dikkatli o
 
 <div align="center">
 
-![Cluedo_Steam](Docs/Assets\Witness.png)
+![Cluedo_Steam](Docs/Assets/Witness.png)
 
 </div>
 
@@ -113,7 +113,7 @@ Input field'a sorunuzu yazın ve "Sor" butonuna basın.
 
 <div align="center">
 
-![Cluedo_Steam](Docs/Assets\Ask_Panel.png)
+![Cluedo_Steam](Docs/Assets/Ask_Panel.png)
 
 </div>
 
@@ -124,7 +124,7 @@ Input field'a sorunuzu yazın ve "Sor" butonuna basın.
 
 <div align="center">
 
-![Cluedo_Steam](Docs/Assets\Ornek_Sorgu.png)
+![Cluedo_Steam](Docs/Assets/Ornek_Sorgu.png)
 
 </div>
 
@@ -143,7 +143,7 @@ Elinizde yeterli ipucu topladığınızda:
 
 <div align="center">
 
-![Cluedo_Steam](Docs/Assets\Ornek_Wın.png)
+![Cluedo_Steam](Docs/Assets/Ornek_Wın.png)
 
 </div>
 
@@ -315,8 +315,8 @@ Katil: "Mutfakta- HAYİR, mutfakta değildim!"
 ## 📚 Detaylı Dokümantasyon
 
 ### 🎮 Oyun Tasarımı
-- 📖 [Demo GDD (Game Design Document)](Docs/GDD\Demo-GDD\README.md)
-- 📖 [Ana GDD (Game Design Document)](Docs/GDD\Main-GDD\README.MD)
+- 📖 [Demo GDD (Game Design Document)](Docs/GDD/Demo-GDD/README.md)
+- 📖 [Ana GDD (Game Design Document)](Docs/GDD/Main-GDD/README.MD)
 
 ### 📊 Raporlar
 - 📈 [MVP Raporu](Docs/Reports/MVP-Report/README.md)
