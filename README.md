@@ -10,7 +10,7 @@
 
 <div align="center">
 
-![Game_UI](Assets/Game_UI.png)
+![Game_UI](Docs/Assets/Game_UI.png)
 
 </div>
 
@@ -51,7 +51,7 @@ Katilin **5 duygusal parametresi** vardır ve her sorunuz bu duyguları etkiler:
 
 <div align="center">
 
-![Cluedo_Steam](Assets/Duygu_Panel.png)
+![Cluedo_Steam](Docs/Assets/Duygu_Panel.png)
 
 </div>
 
@@ -94,7 +94,7 @@ Oyun başlarken bir **görgü tanığı ifadesi** alırsınız. Ancak dikkatli o
 
 <div align="center">
 
-![Cluedo_Steam](Assets\Witness.png)
+![Cluedo_Steam](Docs/Assets\Witness.png)
 
 </div>
 
@@ -113,7 +113,7 @@ Input field'a sorunuzu yazın ve "Sor" butonuna basın.
 
 <div align="center">
 
-![Cluedo_Steam](Assets\Ask_Panel.png)
+![Cluedo_Steam](Docs/Assets\Ask_Panel.png)
 
 </div>
 
@@ -124,7 +124,7 @@ Input field'a sorunuzu yazın ve "Sor" butonuna basın.
 
 <div align="center">
 
-![Cluedo_Steam](Assets\Ornek_Sorgu.png)
+![Cluedo_Steam](Docs/Assets\Ornek_Sorgu.png)
 
 </div>
 
@@ -143,7 +143,7 @@ Elinizde yeterli ipucu topladığınızda:
 
 <div align="center">
 
-![Cluedo_Steam](Assets\Ornek_Wın.png)
+![Cluedo_Steam](Docs/Assets\Ornek_Wın.png)
 
 </div>
 
@@ -223,7 +223,7 @@ Oyun, **80'ler sorgu odası** atmosferini taşır:
 
 <div align="center">
 
-![Cluedo_Steam](Assets/Game_UI.png)
+![Cluedo_Steam](Docs/Assets/Game_UI.png)
 
 </div>
 
@@ -315,12 +315,12 @@ Katil: "Mutfakta- HAYİR, mutfakta değildim!"
 ## 📚 Detaylı Dokümantasyon
 
 ### 🎮 Oyun Tasarımı
-- 📖 [Demo GDD (Game Design Document)](GDD\Demo-GDD\README.md)
-- 📖 [Ana GDD (Game Design Document)](GDD\Main-GDD\README.MD)
+- 📖 [Demo GDD (Game Design Document)](Docs/GDD\Demo-GDD\README.md)
+- 📖 [Ana GDD (Game Design Document)](Docs/GDD\Main-GDD\README.MD)
 
 ### 📊 Raporlar
-- 📈 [MVP Raporu](Reports/MVP-Report/README.md)
-- 🚀 [v0.1.0 Release Notları](Reports/v0.1.0-Report/README.md)
+- 📈 [MVP Raporu](Docs/Reports/MVP-Report/README.md)
+- 🚀 [v0.1.0 Release Notları](Docs/Reports/v0.1.0-Report/README.md)
 
 ---
 
