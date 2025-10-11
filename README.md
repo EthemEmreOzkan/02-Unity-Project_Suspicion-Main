@@ -25,7 +25,7 @@
 4. Katili yakalayın! 🔍
 ```
 - **İtch.io:** *Yakında Eklenecek*
-- **v0.1.0:** [GitHub Releases Sayfası]
+- **v0.1.0:** [GitHub Releases Sayfası](https://github.com/EthemEmreOzkan/02-Unity-Project_Suspicion-Prototype/releases/tag/0.1.0)
 
 ---
 
