@@ -47,7 +47,7 @@ public class Text_Seperator_2 : MonoBehaviour
     {
         if (string.IsNullOrEmpty(Response))
         {
-            Debug.LogError("Suspect response is empty!");
+            Debug.LogError("[Text_Seperator_3] Suspect response is empty!");
             return;
         }
 
@@ -93,17 +93,14 @@ public class Text_Seperator_2 : MonoBehaviour
                 }
                 else if (Current_Section == "#Duygu_Değişimleri")
                 {
-                    // Parse emotion changes
                     Parse_Emotion_Change(line, Emotion_Changes);
                 }
                 else if (Current_Section == "#Gerekçe")
                 {
-                    // Parse emotion reasons
                     Parse_Emotion_Reason(line, Emotion_Reasons);
                 }
                 else if (Current_Section == "#Durum")
                 {
-                    // Parse emotional state
                     Current_Emotional_State = line.Replace("*", "").Trim();
                 }
             }
@@ -118,6 +115,8 @@ public class Text_Seperator_2 : MonoBehaviour
         // Apply parsed emotion changes
         Apply_Emotion_Changes(Emotion_Changes);
         Apply_Emotion_Reasons(Emotion_Reasons);
+        
+        Debug.Log($"[Text_Seperator_3] Parsed successfully. State: {Current_Emotional_State}");
     }
 
     #endregion
@@ -157,7 +156,7 @@ public class Text_Seperator_2 : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Could not parse emotion value: {line}");
+                Debug.LogWarning($"[Text_Seperator_3] Could not parse emotion value: {line}");
             }
         }
     }
