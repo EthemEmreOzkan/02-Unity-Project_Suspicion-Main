@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Text;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class Murder_Manager : MonoBehaviour
 {
@@ -17,13 +18,19 @@ public class Murder_Manager : MonoBehaviour
     [Header("Display References --------------------------------------------------------------")]
     [Space]
     [SerializeField] private TMP_Text Emotional_State_Display;
-    [SerializeField] private TMP_Text Suspect_Response_Display;
+    [SerializeField] public TMP_Text Suspect_Response_Display;
     [Space]
     [Header("Text Separators --------------------------------------------------------------------")]
     [Space]
     [SerializeField] private Text_Seperator_0 Text_Seperator_0;
     [SerializeField] private Text_Seperator_2 Text_Seperator_2;
     [Space]
+    [Header("Button References -------------------------------------------------------------------")]
+    [Space]
+    [SerializeField] private Button Ask_Suspect_Button;
+    [SerializeField] private Button Suspicion_Words_Button;
+    [SerializeField] private Button Witness_Button;
+    [SerializeField]
     [Header("Current Emotions (Public Int) ------------------------------------------------------")]
     [Space]
     public int Korku = 40;
@@ -60,7 +67,8 @@ public class Murder_Manager : MonoBehaviour
     #endregion
 
     #region Private Vars
-        private Coroutine Typewriter_Coroutine;
+        
+    public Coroutine Typewriter_Coroutine;
     private bool Waiting_For_Suspect_Response = false;
     private bool Game_Loop_Ready = false;
     private const int MAX_QUESTIONS_FOR_SUMMARY = 5;
@@ -125,11 +133,15 @@ public class Murder_Manager : MonoBehaviour
 
     string player_question = Player_Input_Field.text.Trim();
 
-    if (string.IsNullOrEmpty(player_question))
-    {
-        Debug.LogWarning("[Murder_Manager] Player input is empty!");
-        return;
-    }
+        if (string.IsNullOrEmpty(player_question))
+        {
+            Debug.LogWarning("[Murder_Manager] Player input is empty!");
+            return;
+        }
+    
+    Witness_Button.interactable = false;
+    Ask_Suspect_Button.interactable = false;
+    Suspicion_Words_Button.interactable = false;
 
     Clear_Suspect_Response();
     Ask_Suspect_Question(player_question);
@@ -202,7 +214,7 @@ public class Murder_Manager : MonoBehaviour
         }
     }
 
-    private void Process_Suspect_Response()
+    public void Process_Suspect_Response()
     {
         string response = Gemini_Api_Handler.Last_Response;
         
@@ -449,12 +461,12 @@ public class Murder_Manager : MonoBehaviour
         }
     }
 
-    private void Display_Suspect_Response()
+    public void Display_Suspect_Response()
     {
         if (Suspect_Response_Display != null)
         {
             if (Typewriter_Coroutine != null)
-            StopCoroutine(Typewriter_Coroutine); // Önceki yazıyı iptal et
+                StopCoroutine(Typewriter_Coroutine); // Önceki yazıyı iptal et
 
             Typewriter_Coroutine = StartCoroutine(
             Typewriter_Effect(Text_Seperator_2.Suspect_Response, Suspect_Response_Display)
@@ -466,7 +478,7 @@ public class Murder_Manager : MonoBehaviour
             Debug.Log($"KATIL: {Text_Seperator_2.Suspect_Response}");
         }
     }
-
+    
     private System.Collections.IEnumerator Typewriter_Effect(string Text, TMP_Text Target_TMP)
     {
         Target_TMP.text = "";
@@ -477,6 +489,10 @@ public class Murder_Manager : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
         Typewriter_Coroutine = null;
+        
+        Witness_Button.interactable = true;
+        Ask_Suspect_Button.interactable = true;
+        Suspicion_Words_Button.interactable = true;
     }
     
     private System.Collections.IEnumerator Typewriter_Effect_Minus(string Text, TMP_Text Target_TMP)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Text;
 using TMPro;
+using UnityEngine.UI;
 
 public class Witness_Manager : MonoBehaviour
 {
@@ -17,8 +18,11 @@ public class Witness_Manager : MonoBehaviour
     [SerializeField] private Text_Seperator_0 Text_Seperator_0;
     [SerializeField] private Text_Seperator_1 Text_Seperator_1;
     [Space]
-    [Header("Debug Options -----------------------------------------------------------------------")]
-    [SerializeField] private bool Enable_Debug_Keys = true;
+    [Header("Button References -------------------------------------------------------------------")]
+    [Space]
+    [SerializeField] private Button Ask_Suspect_Button;
+    [SerializeField] private Button Suspicion_Words_Button;
+    [SerializeField] private Button Witness_Button;
     [Space]
 
     #endregion
@@ -44,6 +48,7 @@ public class Witness_Manager : MonoBehaviour
             Witness_Interrogation_Started = true;
             Waiting_For_Witness_Response = true;
             Start_Witness_Interrogation();
+
         }
         
         if (Waiting_For_Witness_Response && !Gemini_Api_Handler.Is_Request_In_Progress && Gemini_Api_Handler.Is_Response_Received)
@@ -51,16 +56,15 @@ public class Witness_Manager : MonoBehaviour
             Process_Witness_Response();
             Waiting_For_Witness_Response = false;
             
+            Witness_Button.interactable = true;
+            Ask_Suspect_Button.interactable = true;
+            Suspicion_Words_Button.interactable = true;
+
             if (Witness_Interrogation_Started)
             {
                 Witness_Interrogation_Started = false;
                 Witness_Interrogation_Completed = true;
             }
-        }
-        //! Buton entegrasyonu buraya yapılacak
-        if (Enable_Debug_Keys && Input.GetKeyDown(KeyCode.A) && !Gemini_Api_Handler.Is_Request_In_Progress && !Waiting_For_Witness_Response)
-        {
-            Manual_Witness_Interrogation();
         }
     }
 
@@ -79,6 +83,10 @@ public class Witness_Manager : MonoBehaviour
         Text_Seperator_1.Save_Previous_Response();
         Text_Seperator_1.Start_Waiting_Animation();
         Send_Witness_Prompt();
+
+        Witness_Button.interactable = false;
+        Ask_Suspect_Button.interactable = false;
+        Suspicion_Words_Button.interactable = false;
     }
 
     public void Manual_Witness_Interrogation()
@@ -90,6 +98,10 @@ public class Witness_Manager : MonoBehaviour
         Text_Seperator_1.Save_Previous_Response();
         Text_Seperator_1.Start_Waiting_Animation();
         Send_Witness_Prompt();
+
+        Witness_Button.interactable = false;
+        Ask_Suspect_Button.interactable = false;
+        Suspicion_Words_Button.interactable = false;
     }
 
     #endregion

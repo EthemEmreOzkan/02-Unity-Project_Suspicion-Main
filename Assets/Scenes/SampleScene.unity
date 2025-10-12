@@ -3292,6 +3292,9 @@ MonoBehaviour:
   Suspect_Response_Display: {fileID: 1708367816}
   Text_Seperator_0: {fileID: 187830218}
   Text_Seperator_2: {fileID: 187830220}
+  Ask_Suspect_Button: {fileID: 632655225}
+  Suspicion_Words_Button: {fileID: 1131730050}
+  Witness_Button: {fileID: 1622218278}
   Korku: 40
   Stres: 40
   Ofke: 20
@@ -7528,6 +7531,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 462347286}
+        m_TargetAssemblyTypeName: Clock_Counter, Assembly-CSharp
+        m_MethodName: Set_Current_CLock_Var_For_Witness
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1622218279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9642,7 +9657,9 @@ MonoBehaviour:
   Prompt_List_SO: {fileID: 11400000, guid: fe279a3d78231754fa7c6087bb545472, type: 2}
   Text_Seperator_0: {fileID: 187830218}
   Text_Seperator_1: {fileID: 187830219}
-  Enable_Debug_Keys: 0
+  Ask_Suspect_Button: {fileID: 632655225}
+  Suspicion_Words_Button: {fileID: 1131730050}
+  Witness_Button: {fileID: 1622218278}
 --- !u!1 &1925580458
 GameObject:
   m_ObjectHideFlags: 0

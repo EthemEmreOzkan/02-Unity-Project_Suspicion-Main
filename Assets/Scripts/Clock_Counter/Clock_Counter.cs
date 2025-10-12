@@ -54,6 +54,23 @@ public class Clock_Counter : MonoBehaviour
 
         clockAnimationCoroutine = StartCoroutine(AnimateClockChange(previousClock, Current_Clock));
     }
+    
+    public void Set_Current_CLock_Var_For_Witness()
+    {
+        int minutes = Current_Clock % 100;
+        int previousClock = Current_Clock;
+
+        Current_Clock += 100;
+
+        NormalizeClock();
+        ClampToEndClock();
+
+        // Önceki saat ile yeni saat arasında animasyon başlat
+        if (clockAnimationCoroutine != null)
+            StopCoroutine(clockAnimationCoroutine);
+
+        clockAnimationCoroutine = StartCoroutine(AnimateClockChange(previousClock, Current_Clock));
+    }
 
     private void NormalizeClock()
     {

@@ -147,35 +147,35 @@ public class Suspicion_Words_Manager : MonoBehaviour
         Set_Button_Color(Weapon_Buttons[button_Index], Selected_Color);
     }
 
-   private void On_Prediction_Button_Clicked()
-{
-    // Her kategoriden seçim yapıldı mı kontrol et
-    if (!Is_All_Categories_Selected())
-    {
-        Debug.LogWarning("Tüm kategorilerden seçim yapılmadı!");
-        return;
+        private void On_Prediction_Button_Clicked()
+        {
+        // Her kategoriden seçim yapıldı mı kontrol et
+        if (!Is_All_Categories_Selected())
+        {
+            Debug.LogWarning("Tüm kategorilerden seçim yapılmadı!");
+            return;
+        }
+
+        // Player_Prediction string'ini oluştur
+        string selected_Motive = Motives[Selected_Motive_Index].text;
+        string selected_Location = Locations[Selected_Location_Index].text;
+        string selected_Weapon = Weapons[Selected_Weapon_Index].text;
+
+        Player_Prediction = Prompt_List_SO.Prompt_List[2].Paragraph + "\n Player Prediction:" + selected_Motive + "," + selected_Location + "," + selected_Weapon + "\n Murders Scenario:" + Text_Seperator_0.Murder_Scenario;
+
+        Debug.Log("Player Prediction Created: " + Player_Prediction);
     }
 
-    // Player_Prediction string'ini oluştur
-    string selected_Motive = Motives[Selected_Motive_Index].text;
-    string selected_Location = Locations[Selected_Location_Index].text;
-    string selected_Weapon = Weapons[Selected_Weapon_Index].text;
+    public bool Is_All_Categories_Selected()
+    {
+        return Selected_Motive_Index >= 0 && Selected_Location_Index >= 0 && Selected_Weapon_Index >= 0;
+    }
 
-    Player_Prediction = Prompt_List_SO.Prompt_List[2].Paragraph + "\n Player Prediction:" + selected_Motive + "," + selected_Location + "," + selected_Weapon + "\n Murders Scenario:" + Text_Seperator_0.Murder_Scenario;
 
-    Debug.Log("Player Prediction Created: " + Player_Prediction);
-}
-
-public bool Is_All_Categories_Selected()
-{
-    return Selected_Motive_Index >= 0 && Selected_Location_Index >= 0 && Selected_Weapon_Index >= 0;
-}
-
-// Game_Loop_Manager'dan çağrılmak için public metod
-public void Prepare_Player_Prediction()
-{
-    On_Prediction_Button_Clicked();
-}
+    public void Prepare_Player_Prediction()
+    {
+        On_Prediction_Button_Clicked();
+    }
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
     #region Private Methods - Color Management

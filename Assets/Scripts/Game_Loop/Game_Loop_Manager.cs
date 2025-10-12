@@ -33,6 +33,7 @@ public class Game_Loop_Manager : MonoBehaviour
 
     #region Private Vars
     private bool Initial_Response_Processed = false;
+    private bool Is_End_Game = false;
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
 
@@ -49,8 +50,30 @@ public class Game_Loop_Manager : MonoBehaviour
         {
             After_Loading_Screen();
         }
+        if(Is_End_Game)
+            End_Game_Screen();
+        if (Is_End_Game && !Gemini_Api_Handler.Is_Request_In_Progress && Gemini_Api_Handler.Is_Response_Received)
+        {
+            StartCoroutine(TypeResponse(Gemini_Api_Handler.Last_Response));
+            Is_End_Game = false;
+        }
     }
 
+    private IEnumerator TypeResponse(string response)
+    {
+        while ( Murder_Manager.Suspect_Response_Display.text.Length > 0)
+        {
+            Murder_Manager.Suspect_Response_Display.text  =  Murder_Manager.Suspect_Response_Display.text .Substring(0,    Murder_Manager.Suspect_Response_Display.text.Length - 1);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        foreach (char c in response)
+        {
+            Murder_Manager.Suspect_Response_Display.text += c;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+    
     #endregion
     //*-----------------------------------------------------------------------------------------*\\    
 
@@ -80,21 +103,17 @@ public class Game_Loop_Manager : MonoBehaviour
         }
     }
 
-    public void On_Prediction_Button_Pressed() 
+    public void On_Prediction_Button_Pressed()
     {
+
         if (!Suspicion_Words_Manager.Is_All_Categories_Selected())
         {
             Debug.LogWarning("Lütfen tüm kategorilerden seçim yapın!");
             return;
         }
-
+        Is_End_Game = true;
         Suspicion_Words_Manager.Prepare_Player_Prediction();
         Send_Player_Prediction();
-        End_Game_Screen();
-        if (!Gemini_Api_Handler.Is_Request_In_Progress && Gemini_Api_Handler.Is_Response_Received)
-        {
-            //!BURAYA ENDGAME İŞLEMLERİ
-        }
     }
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
@@ -125,10 +144,6 @@ public class Game_Loop_Manager : MonoBehaviour
         {
             Gemini_Api_Handler.Send_Prompt(Suspicion_Words_Manager.Player_Prediction);
         }
-        else
-        {
-            Debug.LogError("Player_Prediction boş!");
-        }
     }
 
     private void End_Game_Screen()
@@ -137,7 +152,6 @@ public class Game_Loop_Manager : MonoBehaviour
         StartCoroutine(Fade_Out_Canvas_Group(Suspicion_Words_Tab_CG, 0.1f));
 
         StartCoroutine(Fade_In_Canvas_Group(Sus_Image_EG_CG, 1.5f));
-
     }
 
     public IEnumerator Fade_In_Canvas_Group(CanvasGroup cg, float duration)
