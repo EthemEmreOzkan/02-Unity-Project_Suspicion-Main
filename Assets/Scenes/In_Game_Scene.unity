@@ -932,11 +932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  m_IsActive: 1
-=======
   m_IsActive: 0
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
 --- !u!224 &132379678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1065,11 +1061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  m_IsActive: 0
-=======
   m_IsActive: 1
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
 --- !u!224 &146553063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1082,12 +1074,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  - {fileID: 1034937715}
-  - {fileID: 1156469213}
-=======
   - {fileID: 1732840091}
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
   m_Father: {fileID: 408518203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1156,13 +1143,8 @@ Canvas:
   m_GameObject: {fileID: 146553062}
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  m_RenderMode: 1
-  m_Camera: {fileID: 4665673516821159006}
-=======
   m_RenderMode: 0
   m_Camera: {fileID: 0}
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1173,11 +1155,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  m_SortingOrder: 2
-=======
   m_SortingOrder: 0
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
   m_TargetDisplay: 0
 --- !u!1 &163011555
 GameObject:
@@ -5214,11 +5192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gemini_Api_Handler
   Api_Key_SO: {fileID: 11400000, guid: f9571dc5d0c10464bbefc7f09898e126, type: 2}
   model: gemini-2.5-flash
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  apiKey: YOUR_GEMINI_API_KEY_HERE
-=======
   Api_Key: 
->>>>>>> feat/main-menu:Assets/Scenes/In_Game_Scene.unity
   Last_Response: 
   Is_Response_Received: 0
   Is_Request_In_Progress: 0
