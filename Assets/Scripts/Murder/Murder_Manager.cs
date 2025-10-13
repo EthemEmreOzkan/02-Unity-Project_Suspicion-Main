@@ -479,7 +479,7 @@ public class Murder_Manager : MonoBehaviour
         }
     }
     
-    private System.Collections.IEnumerator Typewriter_Effect(string Text, TMP_Text Target_TMP)
+    public System.Collections.IEnumerator Typewriter_Effect(string Text, TMP_Text Target_TMP)
     {
         Target_TMP.text = "";
 
@@ -495,7 +495,7 @@ public class Murder_Manager : MonoBehaviour
         Suspicion_Words_Button.interactable = true;
     }
     
-    private System.Collections.IEnumerator Typewriter_Effect_Minus(string Text, TMP_Text Target_TMP)
+    public System.Collections.IEnumerator Typewriter_Effect_Minus(string Text, TMP_Text Target_TMP)
     {
         Target_TMP.text = Text;
 

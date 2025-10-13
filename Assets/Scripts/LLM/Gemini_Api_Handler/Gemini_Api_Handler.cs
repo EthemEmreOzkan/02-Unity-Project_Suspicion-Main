@@ -10,8 +10,9 @@ public class Gemini_Api_Handler : MonoBehaviour
 
     [Header("Gemini Ayarları -----------------------------------------------------------")]
     [Space]
-    [SerializeField] private string model = "gemini-2.5-flash";
-    [SerializeField] private string apiKey = "YOUR_GEMINI_API_KEY_HERE";
+    [SerializeField] private Api_Key_SO Api_Key_SO;
+    [SerializeField] private string model = "gemini-2.5-flash-lite";
+    [SerializeField] public string Api_Key = "YOUR_GEMINI_API_KEY_HERE";
     [Space]
     [Header("Yanıt ----------------------------------------------------------------------")]
     [Space]
@@ -45,14 +46,9 @@ public class Gemini_Api_Handler : MonoBehaviour
     public void Send_Prompt(string prompt)
     {
         // API anahtarının ayarlanıp ayarlanmadığını kontrol edin
-        if (string.IsNullOrEmpty(apiKey) || apiKey == "YOUR_GEMINI_API_KEY_HERE")
+        if (string.IsNullOrEmpty(Api_Key) || Api_Key == "YOUR_GEMINI_API_KEY_HERE")
         {
-            string error = "Hata: Lütfen Gemini API Anahtarınızı atayın!";
-            Debug.LogError(error);
-            Last_Response = error;
-            Is_Response_Received = true;
-            Is_Request_In_Progress = false;
-            return;
+            Api_Key = Api_Key_SO.Default_Key;
         }
 
         if (Is_Request_In_Progress)
@@ -76,7 +72,7 @@ public class Gemini_Api_Handler : MonoBehaviour
     private IEnumerator Send_Prompt_To_Gemini(string prompt)
     {
         // API URL'si
-        string url = $"https://generativelanguage.googleapis.com/v1/models/{model}:generateContent?key={apiKey}";
+        string url = $"https://generativelanguage.googleapis.com/v1/models/{model}:generateContent?key={Api_Key}";
 
         // Gönderilecek JSON gövdesi (EscapeJson kullanılarak prompt güvenli hale getirildi)
         string jsonBody = "{\"contents\": [{\"parts\": [{\"text\": \"" + EscapeJson(prompt) + "\"}]}]}";
@@ -97,7 +93,7 @@ public class Gemini_Api_Handler : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
         {
             // Hata durumunda
-            result = $"API Hatası: {request.error}";
+            result = $"API Hatası: {request.error} \n Tekrar Deneyiniz.";
             Debug.LogError("Gemini API Hatası: " + request.error + "\nYanıt: " + request.downloadHandler.text);
         }
         else
