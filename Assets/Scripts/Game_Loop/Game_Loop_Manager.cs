@@ -1,6 +1,9 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game_Loop_Manager : MonoBehaviour
 {
@@ -9,6 +12,7 @@ public class Game_Loop_Manager : MonoBehaviour
 
     [Header("References -------------------------------------------------------------------------")]
     [Space]
+    [SerializeField] private Api_Key_SO Api_Key_SO;
     [SerializeField] private Gemini_Api_Handler Gemini_Api_Handler;
     [SerializeField] private GameObject Loading_Screen;
     [SerializeField] private Prompt_List_SO Prompt_List_SO;
@@ -28,6 +32,14 @@ public class Game_Loop_Manager : MonoBehaviour
     [SerializeField] private CanvasGroup Witness_Tab_CG;
     [SerializeField] private CanvasGroup Suspicion_Words_Tab_CG;
     [SerializeField] private CanvasGroup Sus_Image_EG_CG;
+    [SerializeField] private CanvasGroup Ask_Button;
+    [SerializeField] private Button Main_Menu_Button;
+    [Header("End Game ----------------------------------------------------------------------------")]
+    [SerializeField] private TextMeshProUGUI Real_Sceneario_TMP;
+    [SerializeField] private TextMeshProUGUI After_Credits_TMP;
+    [TextArea (10,3)]
+    [SerializeField] private string After_Credits;
+    [SerializeField] private CanvasGroup Main_Menu_Buttons; 
 
     #endregion
 
@@ -41,6 +53,7 @@ public class Game_Loop_Manager : MonoBehaviour
 
     void Awake()
     {
+        Gemini_Api_Handler.Api_Key = Api_Key_SO.Player_Key;
         Before_Loading_Screen();
     }
 
@@ -54,16 +67,27 @@ public class Game_Loop_Manager : MonoBehaviour
             End_Game_Screen();
         if (Is_End_Game && !Gemini_Api_Handler.Is_Request_In_Progress && Gemini_Api_Handler.Is_Response_Received)
         {
+            StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP));
+            StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
             StartCoroutine(TypeResponse(Gemini_Api_Handler.Last_Response));
             Is_End_Game = false;
         }
     }
 
+    private IEnumerator Type_Scenario_After_Credits(string response, TextMeshProUGUI textMeshProUGUI)
+    {
+        foreach (char c in response)
+        {
+            textMeshProUGUI.text += c;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
     private IEnumerator TypeResponse(string response)
     {
-        while ( Murder_Manager.Suspect_Response_Display.text.Length > 0)
+        while (Murder_Manager.Suspect_Response_Display.text.Length > 0)
         {
-            Murder_Manager.Suspect_Response_Display.text  =  Murder_Manager.Suspect_Response_Display.text .Substring(0,    Murder_Manager.Suspect_Response_Display.text.Length - 1);
+            Murder_Manager.Suspect_Response_Display.text = Murder_Manager.Suspect_Response_Display.text.Substring(0, Murder_Manager.Suspect_Response_Display.text.Length - 1);
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -149,8 +173,9 @@ public class Game_Loop_Manager : MonoBehaviour
     private void End_Game_Screen()
     {
         StartCoroutine(Fade_Out_Canvas_Group(Witness_Tab_CG, 0.2f));
-        StartCoroutine(Fade_Out_Canvas_Group(Suspicion_Words_Tab_CG, 0.1f));
-
+        StartCoroutine(Fade_Out_Canvas_Group(Suspicion_Words_Tab_CG, 0.2f));
+        StartCoroutine(Fade_Out_Canvas_Group(Ask_Button, 0));
+        
         StartCoroutine(Fade_In_Canvas_Group(Sus_Image_EG_CG, 1.5f));
     }
 
@@ -184,6 +209,7 @@ public class Game_Loop_Manager : MonoBehaviour
 
         cg.alpha = 0f;
         cg.gameObject.SetActive(false);
+        StartCoroutine(Fade_In_Canvas_Group(Main_Menu_Buttons, 2));
     }
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
