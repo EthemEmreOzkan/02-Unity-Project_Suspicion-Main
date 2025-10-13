@@ -23,7 +23,10 @@ public class Main_Menu_Manager : MonoBehaviour
 
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
-
+    void Start()
+    {
+        StartCoroutine(Fade_In_Canvas_Group(Menu_Components_CG, 0.5f));
+    }
     void Update()
     {
         if (Test_Key_Button_Clicked && Gemini_Api_Handler.Is_Request_In_Progress && !Gemini_Api_Handler.Is_Response_Received)
@@ -43,7 +46,6 @@ public class Main_Menu_Manager : MonoBehaviour
 
     public void Play_Game()
     {
-
         StartCoroutine(Fade_Out_Canvas_Group(Menu_Components_CG, 0.5f));
     }
     public void Quit_Game()

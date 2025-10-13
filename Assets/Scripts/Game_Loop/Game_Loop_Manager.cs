@@ -33,10 +33,12 @@ public class Game_Loop_Manager : MonoBehaviour
     [SerializeField] private CanvasGroup Suspicion_Words_Tab_CG;
     [SerializeField] private CanvasGroup Sus_Image_EG_CG;
     [SerializeField] private CanvasGroup Ask_Button;
+    [SerializeField] private CanvasGroup Duygu_Durum;
     [SerializeField] private Button Main_Menu_Button;
     [Header("End Game ----------------------------------------------------------------------------")]
     [SerializeField] private TextMeshProUGUI Real_Sceneario_TMP;
-    [SerializeField] private TextMeshProUGUI After_Credits_TMP;
+    [SerializeField] private TextMeshProUGUI After_Credits_TMP1;
+    [SerializeField] private TextMeshProUGUI After_Credits_TMP2;
     [TextArea (10,3)]
     [SerializeField] private string After_Credits;
     [SerializeField] private CanvasGroup Main_Menu_Buttons; 
@@ -67,8 +69,11 @@ public class Game_Loop_Manager : MonoBehaviour
             End_Game_Screen();
         if (Is_End_Game && !Gemini_Api_Handler.Is_Request_In_Progress && Gemini_Api_Handler.Is_Response_Received)
         {
-            StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP));
-            StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
+                    
+        StartCoroutine(Fade_In_Canvas_Group(Main_Menu_Buttons, 3));
+        StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP1));
+        StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP2));
+        StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
             StartCoroutine(TypeResponse(Gemini_Api_Handler.Last_Response));
             Is_End_Game = false;
         }
@@ -76,9 +81,10 @@ public class Game_Loop_Manager : MonoBehaviour
 
     private IEnumerator Type_Scenario_After_Credits(string response, TextMeshProUGUI textMeshProUGUI)
     {
+
         foreach (char c in response)
         {
-            textMeshProUGUI.text += c;
+            textMeshProUGUI.text += $"<color=#FFFFFF>{c}</color>"; // sadece yeni gelen karakterler beyaz
             yield return new WaitForSeconds(0.01f);
         }
     }
@@ -174,7 +180,8 @@ public class Game_Loop_Manager : MonoBehaviour
     {
         StartCoroutine(Fade_Out_Canvas_Group(Witness_Tab_CG, 0.2f));
         StartCoroutine(Fade_Out_Canvas_Group(Suspicion_Words_Tab_CG, 0.2f));
-        StartCoroutine(Fade_Out_Canvas_Group(Ask_Button, 0));
+        StartCoroutine(Fade_Out_Canvas_Group(Ask_Button, 0.2f));
+        StartCoroutine(Fade_Out_Canvas_Group(Duygu_Durum, 0.2f));
         
         StartCoroutine(Fade_In_Canvas_Group(Sus_Image_EG_CG, 1.5f));
     }
@@ -209,7 +216,6 @@ public class Game_Loop_Manager : MonoBehaviour
 
         cg.alpha = 0f;
         cg.gameObject.SetActive(false);
-        StartCoroutine(Fade_In_Canvas_Group(Main_Menu_Buttons, 2));
     }
     #endregion
     //*-----------------------------------------------------------------------------------------*\\
