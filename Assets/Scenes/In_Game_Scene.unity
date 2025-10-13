@@ -3408,10 +3408,6 @@ MonoBehaviour:
   Last_AI_Message_2: 
   Last_Player_Message_2: 
   Last_AI_Message_3: 
-  Question_Count: 0
-  Max_Questions: 10
-  Enable_Debug_Keys: 0
-  Show_Detailed_Logs: 0
 --- !u!1 &657954159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,8 +3893,8 @@ MonoBehaviour:
   After_Credits_TMP2: {fileID: 853868807}
   After_Credits: "PROJECT SUSPICION\nv0.2.0\n\nGeli\u015Ftiren ve Tasarlayan: \nEthem
     Emre \xD6zkan\n\nGeli\u015Ftirilme Suresi:\n07-10.10.2025 v0.1.0\n10-13.10.2025
-    v0.2.0\n\n1\u0130lham: Cluedo \xD7 Disco Elysium \xD7 LLM Teknolojisi\n\nUnity
-    & Google Gemini API ile geli\u015Ftirildi\n\nOynadiginiz i\xE7in te\u015Fekk\xFCrler."
+    v0.2.0\n\nUnity & Google Gemini API ile geli\u015Ftirildi\n\nOynadiginiz i\xE7in
+    te\u015Fekk\xFCrler."
   Main_Menu_Buttons: {fileID: 146553064}
 --- !u!1 &750037345
 GameObject:

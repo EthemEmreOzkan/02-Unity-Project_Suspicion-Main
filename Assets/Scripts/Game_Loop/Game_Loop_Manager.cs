@@ -71,9 +71,9 @@ public class Game_Loop_Manager : MonoBehaviour
         StartCoroutine(Fade_In_Canvas_Group(Main_Menu_Buttons, 3));
         StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP1));
         StartCoroutine(Type_Scenario_After_Credits(After_Credits, After_Credits_TMP2));
-        StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
-            StartCoroutine(TypeResponse(Gemini_Api_Handler.Last_Response));
-            Is_End_Game = false;
+        //StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
+        StartCoroutine(TypeResponse(Gemini_Api_Handler.Last_Response));
+        Is_End_Game = false;
         }
     }
 
@@ -100,6 +100,8 @@ public class Game_Loop_Manager : MonoBehaviour
             Murder_Manager.Suspect_Response_Display.text += c;
             yield return new WaitForSeconds(0.01f);
         }
+        
+        StartCoroutine(Type_Scenario_After_Credits(Text_Seperator_0.Murder_Scenario, Real_Sceneario_TMP));
     }
     
     #endregion

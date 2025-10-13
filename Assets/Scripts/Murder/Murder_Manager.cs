@@ -268,8 +268,8 @@ public class Murder_Manager : MonoBehaviour
         sb.AppendLine($"<color=yellow>Korku:</color> {Korku}/100");
         sb.AppendLine($"<color=red>Stres:</color> {Stres}/100");
         sb.AppendLine($"<color=orange>Öfke:</color> {Ofke}/100");
-        sb.AppendLine($"<color=cyan>Soğukkanlılık:</color> {Sogukkkanlilik}/100");
-        sb.AppendLine($"<color=gray>Yorgunluk:</color> {Yorgunluk}/100");
+        sb.AppendLine($"<color=purple>Soğukkanlılık:</color> {Sogukkkanlilik}/100");
+        sb.AppendLine($"<color=blue>Yorgunluk:</color> {Yorgunluk}/100");
         
         if (!string.IsNullOrEmpty(Text_Seperator_2.Current_Emotional_State))
         {
