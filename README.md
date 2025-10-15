@@ -10,7 +10,7 @@
 
 <div align="center">
 
-![Game_UI](Docs/Assets/Game_UI.png)
+![Game_UI](Docs/Assets/Game_UI.png) //görsel değişecek
 
 </div>
 
